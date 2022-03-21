@@ -7,12 +7,20 @@ int main() {
 	
 	srand (time(0));
 	
-	int input = 0, nahodna = 0, easypokus = 5, mediumpokus = 8, hardpokus;
+	int input = 0, nahodna = 0, easypokus = 5, mediumpokus = 8, hardpokus = 12;
 	char obtiznost, konec;
-	
+
 		printf("> VYBER SI OBTIZNOST <\n\n  [1]Easy   - do 10\n  [2]Medium - do 50\n  [3]Hard   - do 100\n\n  [4]Jak hra funguje\n  [5]Score\n  [6]Konec\n\nZadej: ", easyscore);
 		
 			scanf(" %c", &obtiznost);
+		
+		//pro ty chytre lidi co zadali neco jineho nez je v nabidce
+		if (obtiznost != '1' && obtiznost != '2' && obtiznost != '3' && obtiznost != '4' && obtiznost != '5' && obtiznost != '6') {
+			
+			system("cls");
+			main();
+		}
+		
 		
 		//uzivatel si vybral obtiznost Easy		
 		if (obtiznost == '1') {
@@ -118,20 +126,19 @@ int main() {
 	
 			}
 		
-		//uzivatel si vybral obtiznost Hard
+		//uzivatel si vybral obtiznost Easy		
 		if (obtiznost == '3') {
 			
 			system("cls");
 		
 			nahodna = rand()%100+1;
-			hardpokus = 12;
 			
 			printf("Vybral sis obtiznost Hard, zadavej v rozmezi 0 - 100. Mas 12 pokusu na uhodnuti cisla.\n\n");
 			
-				while(hardpokus != 0) {
+				while(easypokus != 0) {
 					
 					printf("\nZbyvajici pokusy (%i) \nZadej: ", hardpokus);
-						
+					
 						scanf("%i", &input);
 						
 					
@@ -144,24 +151,23 @@ int main() {
 							printf("\nZadane cislo je moc velke.\n");
 							
 						if (input < 0 || input > 100)
-								
-							printf("\nCislo co jsi zadal neni v rozmezi, tvuj problem stracis jeden pokus.\n");
-
-						//uzivatel vyhral			
-						if (input == nahodna);
 							
-							break;	
-					
-					hardpokus--;			
-				
-					}
+							printf("\nCislo co jsi zadal neni v rozmezi, tvuj problem stracis jeden pokus.\n");
+							
+						//uzivatel vyhral	
+						if (input == nahodna)
+						
+							break;		
+							
+					hardpokus--;	
+				}
 			
 			//program zjistuje jestli uzivatel prohral nebo ne
 			if (hardpokus == 0) 
 				
 				printf("\nSmula, prohral jsi.");
 	
-			if (hardpokus != 0)
+			else
 				
 				printf("\nGratuluji, vyhral jsi.\nPocet pokusu co ti zbyly - %i", hardpokus);		
 			
@@ -176,7 +182,9 @@ int main() {
 			
 			system("cls");
 			
-			printf("> JAK FUNGUJE HRA <\n\nPocitac si mysli cislo a tvym ukolem je jej uhodnout.\nVzdy mas vybrane rozmezi cisel ve kterem si pocitac vybira a pocet pokusu podle vybrane obtiznosti.");	
+			printf("> JAK FUNGUJE HRA <\n\n");
+			printf("Pocitac si mysli cislo a tvym ukolem je jej uhodnout.\n");
+			printf("Vzdy mas vybrane rozmezi cisel ve kterem si pocitac vybira a pocet pokusu podle vybrane obtiznosti.");
 		}
 
 
@@ -185,14 +193,12 @@ int main() {
 			
 			system("cls");
 			
-			printf("> TVE NEJVYSSI SKORE <\n\n  Easy   (%i)   nejvyssi mozne skore je 5\n  Medium (%i)   nejvyssi mozne skore je 8\n  Hard   (%i)   nejvyssi mozne skore je 12", easyscore, mediumscore, hardscore);
+			printf("> TVE NEJVYSSI SKORE <\n\n  Easy    (%i)   nejvyssi mozne skore je 5\n  Medium  (%i)   nejvyssi mozne skore je 8\n  Hard    (%i)   nejvyssi mozne skore je 12", easyscore, mediumscore, hardscore);
 		}
 
 		//uzivatel si preje vypnout hru
 		if (obtiznost == '6') {
-		
-			while(konec != 'y' || konec != 'n') {				
-			
+				
 				system("cls");
 			
 				printf("Opravdu si prejes ukoncit program? [y/n] ");
@@ -209,7 +215,7 @@ int main() {
 						
 					if (konec == 'y')
 					
-						break;
+						exit(0);
 						
 					else {
 							
@@ -218,14 +224,12 @@ int main() {
 					}	
 				}
 			
-				if (konec == 'n') {
+				else {
 					
 					system("cls");
 					main();
-				}		
-			}			
-			exit(0);
-		}
+				}					
+			}
 	
 		//Hrac se vraci do menu	
 		printf("\n\nPro vraceni do hlavniho menu stiskni enter.");

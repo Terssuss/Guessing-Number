@@ -123,7 +123,6 @@ int main() {
 			if (mediumpokus != 0 && mediumpokus > mediumscore) 
 			
 				mediumscore = mediumpokus;
-	
 			}
 		
 		//uzivatel si vybral obtiznost Easy		
@@ -135,7 +134,7 @@ int main() {
 			
 			printf("Vybral sis obtiznost Hard, zadavej v rozmezi 0 - 100. Mas 12 pokusu na uhodnuti cisla.\n\n");
 			
-				while(easypokus != 0) {
+				while(hardpokus != 0) {
 					
 					printf("\nZbyvajici pokusy (%i) \nZadej: ", hardpokus);
 					
